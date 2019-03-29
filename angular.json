@@ -130,6 +130,134 @@
           }
         }
       }
+    },
+    "reg": {
+      "root": "projects/reg/",
+      "sourceRoot": "projects/reg/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/reg",
+            "index": "projects/reg/src/index.html",
+            "main": "projects/reg/src/main.ts",
+            "polyfills": "projects/reg/src/polyfills.ts",
+            "tsConfig": "projects/reg/tsconfig.app.json",
+            "assets": [
+              "projects/reg/src/favicon.ico",
+              "projects/reg/src/assets"
+            ],
+            "styles": [
+              "projects/reg/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/reg/src/environments/environment.ts",
+                  "with": "projects/reg/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "reg:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "reg:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "reg:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/reg/src/test.ts",
+            "polyfills": "projects/reg/src/polyfills.ts",
+            "tsConfig": "projects/reg/tsconfig.spec.json",
+            "karmaConfig": "projects/reg/karma.conf.js",
+            "styles": [
+              "projects/reg/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/reg/src/favicon.ico",
+              "projects/reg/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/reg/tsconfig.app.json",
+              "projects/reg/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "reg-e2e": {
+      "root": "projects/reg-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/reg-e2e/protractor.conf.js",
+            "devServerTarget": "reg:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "reg:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/reg-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "my-app"

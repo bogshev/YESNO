@@ -2,19 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { VoterComponent } from './voter/voter.component';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    VoterComponent,
-
+    AppComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent, VoterComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

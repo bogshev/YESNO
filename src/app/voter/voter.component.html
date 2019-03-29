@@ -1,0 +1,18 @@
+<h2>CHOOSE</h2>
+<div style="text-align:center">
+
+  <h4>{{entry}}</h4>
+  <input type ="text" #demoInput>
+  <br><br>
+  <h2>Choose your alliance</h2>
+  <br>
+  <button (click) = "yes(demoInput.value)">YES</button>
+  <button (click) = "no(demoInput.value)">NO</button>
+  <br>
+  voted yes {{y}}
+  <br>
+  voted no {{n}}
+
+
+</div>
+
